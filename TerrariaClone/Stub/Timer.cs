@@ -2,39 +2,49 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace TerrariaClone
 {
-    class ActionEvent
+    public class ActionEvent
     {
     }
-    delegate void ActionListener(ActionEvent actionEvent);
-    class Timer
+    public delegate void ActionListener(ActionEvent actionEvent);
+    public class Timer
     {
-        System.Timers.Timer internalTimer;
+        public static List<Timer> TimerList = new List<Timer>();
         int delayMilliseconds;
+        int elapsedMilliseconds;
+        bool running = true;
         List<ActionListener> listeners = new List<ActionListener>();
         public Timer(int delayMilliseconds, ActionListener listener)
         {
             this.delayMilliseconds = delayMilliseconds;
-            internalTimer = new System.Timers.Timer(this.delayMilliseconds);
-            internalTimer.Elapsed += InternalTimer_Elapsed;
             if (listener != null)
                 listeners.Add(listener);
+            TimerList.Add(this);
         }
 
-        private void InternalTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        public void Tick(int milliseconds)
         {
-            foreach (var actionListener in listeners)
-                actionListener(null);
+            if (!running) return;
+            elapsedMilliseconds += milliseconds;
+            while (elapsedMilliseconds > delayMilliseconds)
+            {
+                foreach (var actionListener in listeners)
+                    actionListener(null);
+                elapsedMilliseconds -= delayMilliseconds;
+            }
         }
 
         public void addActionListener(ActionListener listener)
         {
             listeners.Add(listener);
         }
-        public void stop() => internalTimer.Stop();
-        public void start() => internalTimer.Start();
+        public void stop()
+        {
+            elapsedMilliseconds = 0;
+            running = false;
+        }
+        public void start() => running = true;
     }
 }

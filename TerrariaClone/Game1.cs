@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TerrariaClone
 {
@@ -66,7 +67,7 @@ namespace TerrariaClone
         }
 
         MouseState lastMouseState;
-        KeyState lastKeyState;
+        Keys[] lastPressedKeys = new Keys[0];
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -97,8 +98,21 @@ namespace TerrariaClone
                 foreach (var listener in MouseMotionListeners)
                     listener.mouseMoved(new MouseEvent(mouseState.Position.X, mouseState.Position.Y));
 
+            var keyState = Keyboard.GetState();
+            var keysPressed = keyState.GetPressedKeys();
+            foreach(var key in keysPressed.Except(lastPressedKeys))
+            {
+                foreach (var listener in KeyListeners)
+                    listener.keyPressed(new KeyEvent((byte)(int)key));
+            }
+            
+
             // TODO: Add your update logic here
             lastMouseState = mouseState;
+            lastPressedKeys = keysPressed;
+
+            foreach (var timer in Timer.TimerList.ToList())
+                timer.Tick(gameTime.ElapsedGameTime.Milliseconds);
 
 
             base.Update(gameTime);

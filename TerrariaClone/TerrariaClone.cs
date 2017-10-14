@@ -2268,8 +2268,8 @@ namespace TerrariaClone
                                 if (mousePos[0] >= 186 && mousePos[0] <= 615 &&
                                     mousePos[1] >= 458 && mousePos[1] <= 484)
                                 { // create new world
-                                    state = "new_world";
                                     newWorldName = new TextField(400, "New World");
+                                    state = "new_world";
                                     repaint();
                                     menuPressed = true;
                                 }

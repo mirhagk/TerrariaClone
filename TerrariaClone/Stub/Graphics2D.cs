@@ -23,11 +23,13 @@ namespace TerrariaClone
             Width = width;
             Height = height;
             if (isParentImage)
-                target = new RenderTarget2D(graphics, Width, Height);
+            {
+                target = new RenderTarget2D(graphics, Width, Height, false, SurfaceFormat.Color, DepthFormat.None, 0, RenderTargetUsage.PreserveContents);
+            }
             if (pixelTexture == null)
             {
                 pixelTexture = new Texture2D(graphics, 1, 1);
-                pixelTexture.SetData(new Color[] { Color.White });
+                pixelTexture.SetData(new Color[] { Color.Green });
             }
         }
         GraphicsDevice graphics => Game1.Instance.GraphicsDevice;
@@ -56,8 +58,11 @@ namespace TerrariaClone
         public void setColor(Color color) => drawColor = color;
         public void drawString(string text, int x, int y)
         {
-            //TODO: Do
-            //throw new NotImplementedException();
+            var sb = new SpriteBatch(graphics);
+            sb.Begin();
+            sb.DrawString(drawFont.SpriteFont, text, new Vector2(x, y), drawColor);
+            sb.End();
+            //TODO: Do this properly
         }
         public static implicit operator GraphicsDevice(Graphics2D source)
         {

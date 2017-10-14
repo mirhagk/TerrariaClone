@@ -45,15 +45,18 @@ namespace TerrariaClone
 
             Graphics2D g2 = (Graphics2D)image.createGraphics();
 
-            g2.setColor(Color.White);
-            g2.setFont(font);
-            g2.drawString(text, 6, height - 10);
-
             g2.setColor(Color.Black);
+            g2.fillRect(0, 0, width, height);
+
+            g2.setColor(Color.Green);
             g2.fillRect(0, 0, width, 3);
             g2.fillRect(0, 0, 3, height);
             g2.fillRect(0, height - 3, width, 3);
             g2.fillRect(width - 3, 0, 3, height);
+
+            g2.setColor(Color.White);
+            g2.setFont(font);
+            g2.drawString(text, 6, height - 10);
         }
 
         public static void print(String text)
