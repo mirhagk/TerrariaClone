@@ -86,7 +86,7 @@ namespace TerrariaClone
             GraphicsDevice.Clear(Color.CornflowerBlue);
             game.paint(new Graphics2D(game.getWidth(),game.getHeight(),false));
             // TODO: Add your drawing code here
-
+            //System.Console.WriteLine($"FPS: {1000.0f / gameTime.ElapsedGameTime.Milliseconds}");
             base.Draw(gameTime);
         }
     }
