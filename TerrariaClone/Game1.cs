@@ -22,7 +22,10 @@ namespace TerrariaClone
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferHeight = 800;
+            graphics.PreferredBackBufferHeight = 600;
             Content.RootDirectory = "Content";
+            IsMouseVisible = true;
         }
 
         /// <summary>
@@ -38,6 +41,7 @@ namespace TerrariaClone
             game = new TerrariaClone();
             game.init();
             base.Initialize();
+            System.Console.WriteLine($"Screen size: {game.getWidth()}x{game.getHeight()}");
         }
 
         /// <summary>
@@ -61,6 +65,8 @@ namespace TerrariaClone
             // TODO: Unload any non ContentManager content here
         }
 
+        MouseState lastMouseState;
+        KeyState lastKeyState;
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -71,8 +77,29 @@ namespace TerrariaClone
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            var mouseState = Mouse.GetState();
+
+            if (mouseState.LeftButton == ButtonState.Pressed && lastMouseState.LeftButton == ButtonState.Released)
+                foreach (var listener in MouseListeners)
+                    listener.mousePressed(new MouseEvent(MouseEvent.BUTTON1));
+            if (mouseState.RightButton == ButtonState.Pressed && lastMouseState.RightButton == ButtonState.Released)
+                foreach (var listener in MouseListeners)
+                    listener.mousePressed(new MouseEvent(MouseEvent.BUTTON3));
+
+            if (mouseState.LeftButton == ButtonState.Released && lastMouseState.LeftButton == ButtonState.Pressed)
+                foreach (var listener in MouseListeners)
+                    listener.mouseReleased(new MouseEvent(MouseEvent.BUTTON1));
+            if (mouseState.RightButton == ButtonState.Released && lastMouseState.RightButton == ButtonState.Pressed)
+                foreach (var listener in MouseListeners)
+                    listener.mouseReleased(new MouseEvent(MouseEvent.BUTTON3));
+
+            if (mouseState.Position != lastMouseState.Position)
+                foreach (var listener in MouseMotionListeners)
+                    listener.mouseMoved(new MouseEvent(mouseState.Position.X, mouseState.Position.Y));
+
             // TODO: Add your update logic here
-            
+            lastMouseState = mouseState;
+
 
             base.Update(gameTime);
         }

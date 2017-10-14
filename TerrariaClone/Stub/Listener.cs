@@ -66,25 +66,35 @@ namespace TerrariaClone
     }
     public class MouseEvent
     {
-        public object getButton() => throw new NotImplementedException();
-        public static object BUTTON1 => throw new NotImplementedException();
-        public static object BUTTON3 => throw new NotImplementedException();
-
-        internal int getX()
+        string Button { get; }
+        int X, Y;
+        public MouseEvent(string button) { Button = button; }
+        public MouseEvent(int x, int y)
         {
-            throw new NotImplementedException();
+            X = x;
+            Y = y;
         }
+        public object getButton() => Button;
+        public static string BUTTON1 { get; } = "BUTTON1";
+        public static string BUTTON3 { get; } = "BUTTON3";
 
-        internal int getY()
-        {
-            throw new NotImplementedException();
-        }
+        internal int getX() => X;
+
+        internal int getY() => Y;
     }
     public class ChangeEvent { }
     public class MouseWheelEvent { }
     public interface ChangeListener { }
     public interface KeyListener { }
-    public interface MouseListener { }
-    public interface MouseMotionListener { }
+    public interface MouseListener
+    {
+        void mousePressed(MouseEvent e);
+        void mouseReleased(MouseEvent e);
+    }
+    public interface MouseMotionListener
+    {
+        void mouseMoved(MouseEvent e);
+        void mouseDragged(MouseEvent e);
+    }
     public interface MouseWheelListener { }
 }
