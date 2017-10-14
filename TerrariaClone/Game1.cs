@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace TerrariaClone
 {
@@ -11,6 +12,12 @@ namespace TerrariaClone
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        TerrariaClone game;
+        public static Game1 Instance { get; } = new Game1();
+        public List<KeyListener> KeyListeners = new List<KeyListener>();
+        public List<MouseListener> MouseListeners = new List<MouseListener>();
+        public List<MouseWheelListener> MouseWheelListeners = new List<MouseWheelListener>();
+        public List<MouseMotionListener> MouseMotionListeners = new List<MouseMotionListener>();
 
         public Game1()
         {
@@ -28,6 +35,8 @@ namespace TerrariaClone
         {
             // TODO: Add your initialization logic here
 
+            game = new TerrariaClone();
+            game.init();
             base.Initialize();
         }
 
@@ -63,6 +72,7 @@ namespace TerrariaClone
                 Exit();
 
             // TODO: Add your update logic here
+            
 
             base.Update(gameTime);
         }
@@ -74,7 +84,7 @@ namespace TerrariaClone
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            game.paint(new Graphics2D(game.getWidth(),game.getHeight(),false));
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);

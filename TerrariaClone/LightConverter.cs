@@ -50,16 +50,18 @@ namespace TerrariaClone
 
         private static Image loadImage(String path)
         {
-            Uri url = Util.getResource(path);
-        Image image = null;
-        try {
-            image = ImageIO.read(url);
+            var url = Util.getResource(path);
+            Image image = null;
+            try
+            {
+                image = ImageIO.read(url);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: could not load image '" + path + "'.");
+            }
+            return image;
         }
-        catch (Exception e) {
-            Console.WriteLine("Error: could not load image '" + path + "'.");
-}
-        return image;
     }
-}
 
 }

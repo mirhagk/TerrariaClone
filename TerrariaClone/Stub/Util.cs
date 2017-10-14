@@ -8,9 +8,9 @@ namespace TerrariaClone
 {
     public static class Util
     {
-        public static Uri getResource(string path)
+        public static string getResource(string path)
         {
-            return new Uri(System.IO.Path.GetFullPath($"./{path}"));
+            return System.IO.Path.ChangeExtension(path, null);
         }
     }
 }

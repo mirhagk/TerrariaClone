@@ -1125,47 +1125,47 @@ namespace TerrariaClone
                     TOOLSPEED.Add((short)i, 0.175);
                 }
 
-                TOOLSPEED.Add((short)154, 0.100);// wood:   P100 S100
-                TOOLSPEED.Add((short)155, 0.100);
-                TOOLSPEED.Add((short)156, 0.100);
-                TOOLSPEED.Add((short)157, 0.110);// stone:  P110 S105
-                TOOLSPEED.Add((short)158, 0.110);
-                TOOLSPEED.Add((short)159, 0.105);
-                TOOLSPEED.Add((short)7, 0.120);  // copper: P120 S110
-                TOOLSPEED.Add((short)11, 0.120);
-                TOOLSPEED.Add((short)16, 0.110);
-                TOOLSPEED.Add((short)8, 0.130);  // iron:   P130 S115
-                TOOLSPEED.Add((short)12, 0.130);
-                TOOLSPEED.Add((short)17, 0.115);
-                TOOLSPEED.Add((short)9, 0.140);  // silver: P140 S120
-                TOOLSPEED.Add((short)13, 0.140);
-                TOOLSPEED.Add((short)18, 0.120);
-                TOOLSPEED.Add((short)10, 0.150); // gold:   P150 S125
-                TOOLSPEED.Add((short)14, 0.150);
-                TOOLSPEED.Add((short)19, 0.125);
-                TOOLSPEED.Add((short)51, 0.160); // zinc:   P160 S130
-                TOOLSPEED.Add((short)52, 0.160);
-                TOOLSPEED.Add((short)53, 0.130);
-                TOOLSPEED.Add((short)54, 0.170); // rhyme:  P170 S135
-                TOOLSPEED.Add((short)55, 0.170);
-                TOOLSPEED.Add((short)56, 0.135);
-                TOOLSPEED.Add((short)57, 0.180); // obdur:  P180 S140
-                TOOLSPEED.Add((short)58, 0.180);
-                TOOLSPEED.Add((short)59, 0.140);
-                TOOLSPEED.Add((short)145, 0.350);// alumin: P250 S175
-                TOOLSPEED.Add((short)146, 0.350);
-                TOOLSPEED.Add((short)147, 0.245);
-                TOOLSPEED.Add((short)148, 0.130);// lead:   P130 S115
-                TOOLSPEED.Add((short)149, 0.130);
-                TOOLSPEED.Add((short)150, 0.115);
-                TOOLSPEED.Add((short)169, 0.250); // magne:  P350 S245
-                TOOLSPEED.Add((short)170, 0.250);
-                TOOLSPEED.Add((short)171, 0.175);
-                TOOLSPEED.Add((short)172, 0.350); // irrad:  P350 S245
-                TOOLSPEED.Add((short)173, 0.350);
-                TOOLSPEED.Add((short)174, 0.245);
+                TOOLSPEED[154] = 0.100;// wood:   P100 S100
+                TOOLSPEED[155] = 0.100;
+                TOOLSPEED[156] = 0.100;
+                TOOLSPEED[157] = 0.110;// stone:  P110 S105
+                TOOLSPEED[158] = 0.110;
+                TOOLSPEED[159] = 0.105;
+                TOOLSPEED[7] = 0.120;  // copper: P120 S110
+                TOOLSPEED[11] = 0.120;
+                TOOLSPEED[16] = 0.110;
+                TOOLSPEED[8] = 0.130;  // iron:   P130 S115
+                TOOLSPEED[12] = 0.130;
+                TOOLSPEED[17] = 0.115;
+                TOOLSPEED[9] = 0.140;  // silver: P140 S120
+                TOOLSPEED[13] = 0.140;
+                TOOLSPEED[18] = 0.120;
+                TOOLSPEED[10] = 0.150; // gold:   P150 S125
+                TOOLSPEED[14] = 0.150;
+                TOOLSPEED[19] = 0.125;
+                TOOLSPEED[51] = 0.160; // zinc:   P160 S130
+                TOOLSPEED[52] = 0.160;
+                TOOLSPEED[53] = 0.130;
+                TOOLSPEED[54] = 0.170; // rhyme:  P170 S135
+                TOOLSPEED[55] = 0.170;
+                TOOLSPEED[56] = 0.135;
+                TOOLSPEED[57] = 0.180; // obdur:  P180 S140
+                TOOLSPEED[58] = 0.180;
+                TOOLSPEED[59] = 0.140;
+                TOOLSPEED[145] = 0.350;// alumin: P250 S175
+                TOOLSPEED[146] = 0.350;
+                TOOLSPEED[147] = 0.245;
+                TOOLSPEED[148] = 0.130;// lead:   P130 S115
+                TOOLSPEED[149] = 0.130;
+                TOOLSPEED[150] = 0.115;
+                TOOLSPEED[169] = 0.250; // magne:  P350 S245
+                TOOLSPEED[170] = 0.250;
+                TOOLSPEED[171] = 0.175;
+                TOOLSPEED[172] = 0.350; // irrad:  P350 S245
+                TOOLSPEED[173] = 0.350;
+                TOOLSPEED[174] = 0.245;
 
-                TOOLSPEED.Add((short)33, 0.125); // stone lighter
+                TOOLSPEED[33] = 0.125; // stone lighter
 
                 TOOLDAMAGE = new Dictionary<short, int>();
 
@@ -6959,7 +6959,7 @@ namespace TerrariaClone
 
         public static Image loadImage(String path)
         {
-            Uri url = Util.getResource(path);
+            var url = Util.getResource(path);
             Image image = null;
             try
             {

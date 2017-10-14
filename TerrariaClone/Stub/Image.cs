@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,25 @@ namespace TerrariaClone
 {
     public class Image
     {
-        public Image(int width, int height) { }
-        public int Width => throw new NotImplementedException();
-        public int Height => throw new NotImplementedException();
-        public Graphics2D createGraphics() => throw new NotImplementedException();
+        public Image(int width, int height)
+        {
+            Width = width;
+            Height = height;
+        }
+        public Image(Texture2D texture)
+        {
+            Texture = texture;
+            Width = Texture.Width;
+            Height = Texture.Height;
+        }
+        public int Width { get; }
+        public int Height { get; }
+        public Texture2D Texture;
+        public Graphics2D Graphics;
+        public Graphics2D createGraphics()
+        {
+            return Graphics = new Graphics2D(Width, Height, parentImage: true);
+        }
         public void setRGB(int x, int y, uint color) => throw new NotImplementedException();
 
         internal uint getRGB(int x, int y)

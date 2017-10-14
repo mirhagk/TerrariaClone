@@ -10,9 +10,9 @@ namespace TerrariaClone
 {
     static class ImageIO
     {
-        public static Image read(Uri url)
+        public static Image read(string url)
         {
-            throw new NotImplementedException();
+            return new Image(Game1.Instance.Content.Load<Texture2D>($"textures/{url}"));
         }
 
         internal static void write(Image texture, string format, FileStream fileStream)

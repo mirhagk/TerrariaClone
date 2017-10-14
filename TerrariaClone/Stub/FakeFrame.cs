@@ -8,13 +8,17 @@ namespace TerrariaClone
 {
     public class FakeFrame
     {
-        public void addKeyListener(KeyListener listener) => throw new NotImplementedException();
-        public void addMouseListener(MouseListener listener) => throw new NotImplementedException();
-        public void addMouseMotionListener(MouseMotionListener listener) => throw new NotImplementedException();
-        public void addMouseWheelListener(MouseWheelListener listener) => throw new NotImplementedException();
-        public void repaint() => throw new NotImplementedException();
-        public int getWidth() => 1920;//TODO: Make work
-        public int getHeight() => 1080;//TODO: Make work
+        public void addKeyListener(KeyListener listener) => Game1.Instance.KeyListeners.Add(listener);
+        public void addMouseListener(MouseListener listener) => Game1.Instance.MouseListeners.Add(listener);
+        public void addMouseMotionListener(MouseMotionListener listener) => Game1.Instance.MouseMotionListeners.Add(listener);
+        public void addMouseWheelListener(MouseWheelListener listener) => Game1.Instance.MouseWheelListeners.Add(listener);
+        public void repaint()
+        {
+            //TOOD: Make this not a no-op
+            
+        }
+        public int getWidth() => 640;//TODO: Make work
+        public int getHeight() => 480;//TODO: Make work
 
     }
 }

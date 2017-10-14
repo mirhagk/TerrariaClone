@@ -755,7 +755,7 @@ namespace TerrariaClone
 
         public static Image loadImage(String path)
         {
-            Uri url = Util.getResource(path);
+            var url = Util.getResource(path);
             Image image = null;
             try
             {
