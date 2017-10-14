@@ -29,7 +29,12 @@ namespace TerrariaClone
         {
             return Graphics = new Graphics2D(Width, Height, parentImage: true);
         }
-        public void setRGB(int x, int y, uint color) => throw new NotImplementedException();
+        public void setRGB(int x, int y, uint color)
+        {
+            if (Texture != null) throw new NotSupportedException();
+            if (Graphics == null) createGraphics();
+            Graphics.setPixel(x, y, color);
+        }
 
         internal uint getRGB(int x, int y)
         {

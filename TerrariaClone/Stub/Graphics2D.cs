@@ -76,6 +76,12 @@ namespace TerrariaClone
             sb.Begin();
             sb.Draw(pixelTexture, new Rectangle(x, y, width, height), drawColor);
             sb.End();
+            
+        }
+        internal void setPixel(int x, int y, uint color) => setPixel(x, y, new Color(color));
+        internal void setPixel(int x, int y, Color color)
+        {
+            target.SetData(0, new Rectangle(x, y, 1, 1), new Color[] { color }, 0, 1);
         }
 
         internal void translate(double p1, double p2)
