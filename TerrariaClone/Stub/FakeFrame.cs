@@ -17,8 +17,8 @@ namespace TerrariaClone
             //TOOD: Make this not a no-op
             
         }
-        public int getWidth() => 640;//TODO: Make work
-        public int getHeight() => 480;//TODO: Make work
+        public int getWidth() => Game1.Instance.GraphicsDevice.Viewport.Width;
+        public int getHeight() => Game1.Instance.GraphicsDevice.Viewport.Height;
 
     }
 }
