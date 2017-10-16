@@ -31,7 +31,11 @@ namespace TerrariaClone
         }
         public void setRGB(int x, int y, uint color)
         {
-            if (Texture != null) throw new NotSupportedException();
+            if (Texture != null)
+            {
+                Texture.SetData(0, new Rectangle(x, y, 1, 1), new Color[] { new Color(color) }, 0, 1);
+                return;
+            }
             if (Graphics == null) createGraphics();
             Graphics.setPixel(x, y, color);
         }

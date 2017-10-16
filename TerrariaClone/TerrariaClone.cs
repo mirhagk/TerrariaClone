@@ -6076,7 +6076,7 @@ namespace TerrariaClone
                     lqd[y, x] = false;
                 }
             }
-            catch (IndexOutOfRangeException e)
+            catch (ArgumentOutOfRangeException e)
             {
                 //
             }
@@ -6245,7 +6245,7 @@ namespace TerrariaClone
                     }
                 }
             }
-            catch (IndexOutOfRangeException e)
+            catch (ArgumentOutOfRangeException e)
             {
                 //
             }

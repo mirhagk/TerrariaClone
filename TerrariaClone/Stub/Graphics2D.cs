@@ -83,15 +83,20 @@ namespace TerrariaClone
         {
             target.SetData(0, new Rectangle(x, y, 1, 1), new Color[] { color }, 0, 1);
         }
+        //TODO use these values when rendering
+        int offsetX = 0;
+        int offsetY = 0;
+        double rotationTheta = 0;
 
-        internal void translate(double p1, double p2)
+        internal void translate(double x, double y)
         {
-            throw new NotImplementedException();
+            offsetX = (int)x;
+            offsetY = (int)y;
         }
 
-        internal void rotate(double v)
+        internal void rotate(double theta)
         {
-            throw new NotImplementedException();
+            rotationTheta = theta;
         }
     }
 }
